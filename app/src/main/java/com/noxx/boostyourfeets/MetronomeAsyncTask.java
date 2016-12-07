@@ -11,7 +11,7 @@ public class MetronomeAsyncTask extends AsyncTask {
     private Metronome metronome;
 
     public void setBpm(double bpm) {
-        metronome.setBpm(bpm);
+        metronome.setRpm(bpm);
     }
 
     public MetronomeAsyncTask() {

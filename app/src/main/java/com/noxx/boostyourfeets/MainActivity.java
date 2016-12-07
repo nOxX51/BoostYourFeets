@@ -1,5 +1,6 @@
 package com.noxx.boostyourfeets;
 
+import android.content.SharedPreferences;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,14 +17,16 @@ public class MainActivity extends AppCompatActivity {
     private MetronomeAsyncTask metronomeAsyncTask;
     public static final double DEFAUL_RPM = 90.0;
     private FloatingActionButton fab;
-    private double bpm = DEFAUL_RPM;
+    private double rpm = DEFAUL_RPM;
+
+    private SharedPreferences saveLastRpm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        saveLastRpm = getPreferences(MODE_PRIVATE);
 
         WheelView wheelView = (WheelView) findViewById(R.id.wheelview);
         //final TextView textView = (TextView) findViewById(R.id.text);
@@ -49,20 +52,36 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                if (!isPlaying){
+
                    metronomeAsyncTask = new MetronomeAsyncTask();
-                   metronomeAsyncTask.setBpm(bpm);
+                   metronomeAsyncTask.setBpm(rpm);
                    metronomeAsyncTask.execute();
                    isPlaying = true;
                }else {
                    metronomeAsyncTask.onCancelled();
                    isPlaying = false;
+
                }
             }
         });
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        rpm = Double.valueOf(saveLastRpm.getString("last rpm", String.valueOf(DEFAUL_RPM)));
+    }
+
+    @Override
+    protected void onStop() {
+        SharedPreferences.Editor editor = saveLastRpm.edit();
+        editor.putString("last rpm",String.valueOf(rpm));
+        editor.commit();
+        super.onStop();
+    }
+
     public double changeRhythm(float angle) {
-        bpm = Math.round(DEFAUL_RPM +((60.0/360.0)*angle));
-        return bpm;
+        rpm = Math.round(DEFAUL_RPM +((60.0/360.0)*angle));
+        return rpm;
     }
 }

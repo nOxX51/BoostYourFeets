@@ -6,7 +6,7 @@ package com.noxx.boostyourfeets;
 
 public class Metronome {
 
-    private double bpm=90;
+    private double rpm =90;
     private int beat=1;
     private int silence = 1;
 
@@ -18,8 +18,8 @@ public class Metronome {
 
     private AudioGenerator audioGenerator = new AudioGenerator(8000);
 
-    public void setBpm(double bpm) {
-        this.bpm = bpm;
+    public void setRpm(double rpm) {
+        this.rpm = rpm;
     }
 
     public Metronome() {
@@ -27,7 +27,7 @@ public class Metronome {
     }
 
     public void calcSilence() {
-        silence = (int) (((60/bpm)*8000)-tick);
+        silence = (int) (((60/ rpm)*8000)-tick);
     }
 
     public void play() {
