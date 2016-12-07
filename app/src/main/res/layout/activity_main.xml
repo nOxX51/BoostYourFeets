@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+>
+
+<com.lukedeighton.wheelview.WheelView
+    android:id="@+id/wheelview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:wheelColor="@color/colorPrimaryDark"
+    app:rotatableWheelDrawable="false"
+    app:selectionAngle="90.0"
+    app:repeatItems="true"
+    app:wheelRadius="match_parent"
+    app:wheelItemCount="14"
+    app:wheelPadding="13dp"
+    app:wheelItemRadius="43dp" />
+    <LinearLayout
+        android:layout_width="270dp"
+        android:layout_height="270dp"
+        android:background="@drawable/shape"
+        android:layout_gravity="center"
+        >
+
+    <LinearLayout
+        android:layout_width="270dp"
+        android:layout_height="270dp"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        >
+        <TextView
+            android:id="@+id/rpm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RPM"
+            android:textSize="20sp"
+            android:textColor="@color/colorStrings"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/rpm_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/colorStrings"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/speed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10KmH"
+            android:textSize="50sp"
+            android:textColor="@color/colorStrings"
+            android:layout_gravity="center"/>
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            >
+
+            <Switch
+                android:id="@+id/gps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorStrings"
+                android:text="GPS On/Off" />
+
+            <Switch
+                android:id="@+id/mode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/colorStrings"
+                android:text="Mode" />
+
+        </LinearLayout>
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_weight="2"
+            >
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:src="@android:drawable/ic_lock_power_off"
+            android:layout_marginTop="10dp"
+            app:fabSize="normal"
+            android:scaleType="center"
+            android:backgroundTint="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"/>
+
+        </LinearLayout>
+    </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>
+
