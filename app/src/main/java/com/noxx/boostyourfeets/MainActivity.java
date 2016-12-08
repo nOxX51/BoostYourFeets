@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         locationDroid = new LocationDroid(this) {
             @Override
             public void onNewLocation(Location location) {
-                kmhText.setText(String.valueOf(Math.round(location.getSpeed())));
+                kmhText.setText(String.valueOf(Math.round(location.getSpeed()))+" Kmh");
             }
 
             @Override
